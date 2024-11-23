@@ -1,6 +1,7 @@
 function imageToRGB(file, callback) {
     const img = new Image();
     img.src = URL.createObjectURL(file);
+    document.getElementById('originalImage').src = img.src;
 
     img.onload = () => {
         const canvas = document.createElement('canvas');
@@ -132,7 +133,7 @@ document.getElementById('compressButton').addEventListener('click', () => {
     const fileInput = document.getElementById('imageInput');
     const file = fileInput.files[0];
     if (!file) return;
-
+    
     const bufferSize = parseInt(document.getElementById('bufferSizeSlider').value);
     const pixelContainer = document.getElementById('pixelContainer');
 

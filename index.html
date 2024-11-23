@@ -4,27 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LZ77 Image Compression</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 400px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: #f9f9f9;
+            margin-top: 20px;
+        }
+
+        .container input, .container button {
+            margin-top: 10px;
+            width: 80%;
+            padding: 8px;
+        }
+
+        .container h1, .container h3 {
+            text-align: center;
+        }
+
+        .rest-content {
+            margin-top: 30px;
+            width: 80%;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>LZ77 Image Compression</h1>
-    <h3>Visualization of LZ77 (Do not use big pictures)</h3>
-    <input type="file" id="imageInput" accept="image/*">
-    <button id="compressButton">Compress Image</button>
-    <br>
+    <div class="container">
+        <h1>LZ77 Image Compression</h1>
+        <h3>Visualization of LZ77 (Do not use big pictures)</h3>
+        <input type="file" id="imageInput" accept="image/*">
+        <!-- Slider for buffer size -->
+        <hr style="border: 1px solid rgb(156, 156, 156); width: 100%;">
 
-    <h2>Original Image:</h2>
-    <img id="originalImage" src="" alt="Original Image" style="max-width: 500px;">
-    <p id="originalSize"></p>
+                <h3>Adjust Buffer Size:</h3>
+        <input type="range" id="bufferSizeSlider" min="0" max="255" value="22">
+        <span id="bufferSizeValue">22</span> <!-- Display current buffer size -->
+        <br>
+        <hr style="border: 1px solid rgb(160, 160, 160); width: 100%; margin: auto;">
 
-    <h2>Compressed Image:</h2>
-    <p id="compressedSize"></p>
+        <button id="compressButton">Compress Image</button>
+    </div>
 
-    <!-- Slider for buffer size -->
-    <h3>Adjust Buffer Size:</h3>
-    <input type="range" id="bufferSizeSlider" min="0" max="255" value="22">
-    <span id="bufferSizeValue">22</span> <!-- Display current buffer size -->
-    <p id="output" style="float: right;"> </p>
-    <div id="pixelContainer" style="margin-top: 20px;"></div>
+    <div class="rest-content">
+        <h2>Original Image:</h2>
+        <img id="originalImage" src="" alt="Original Image" style="max-width: 500px;">
+        <p id="originalSize"></p>
+
+        <h2>Compressed Image:</h2>
+        <p id="compressedSize"></p>
+
+        <div id="pixelContainer" style="margin-top: 20px;"></div>
+        <p id="output" style="float: right;"> </p>
+    </div>
 
     <script src="script.js"></script>
 </body>
